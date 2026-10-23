@@ -1,0 +1,28 @@
+# Import libraries
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+# Load dataset
+df = pd.read_csv("Iris Dataset.csv")
+# Display first 5 records
+print("First 5 Records:")
+print(df.head())
+# Display dataset information
+print("\nDataset Information:")
+print(df.info())
+# Check for missing values
+print("\nMissing Values:")
+print(df.isnull().sum())
+# Remove the Id column (not useful for analysis)
+df = df.drop("Id", axis=1)
+# Encode the target column (Species)
+encoder = LabelEncoder()
+df["Species"] = encoder.fit_transform(df["Species"])
+print("\nEncoded Species:")
+print(df.head())
+# Feature Scaling
+scaler = StandardScaler()
+features = ["SepalLengthCm", "SepalWidthCm",
+            "PetalLengthCm", "PetalWidthCm"]
+df[features] = scaler.fit_transform(df[features])
+print("\nPreprocessed Dataset:")
+print(df.head())

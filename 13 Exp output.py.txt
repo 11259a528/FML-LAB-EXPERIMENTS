@@ -1,0 +1,15 @@
+Learned Q-Table:
+[[ 3.12197621  4.58      ]
+ [ 3.12194524  6.2       ]
+ [ 4.57996122  8.        ]
+ [ 6.19981573 10.        ]
+ [ 0.          0.        ]]
+
+Learned Path:
+[0, 1, 2, 3, 4]
+
+Optimal Policy:
+State 0 -> Right
+State 1 -> Right
+State 2 -> Right
+State 3 -> Right

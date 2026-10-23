@@ -1,0 +1,58 @@
+Highest Mark: 92
+Lowest Mark: 67
+Average Mark: 82.28571428571429
+
+
+Maximum Temperature: 35
+Minimum Temperature: 29
+Average Temperature: 32.0
+
+
+Total Sales: 23800
+Average Sales: 3400.0
+
+
+Even IDs: [102, 104, 106]
+Odd IDs: [101, 103, 105]
+
+
+Positive Values: 3
+Negative Values: 3
+
+
+Duplicate IDs: [101, 102]
+
+
+Highest Price: 600
+Lowest Price: 120
+
+Updated Salaries: [27500.000000000004, 33000.0, 44000.0, 38500.0]
+
+
+Attendance Percentage: 90.0
+
+
+Passed Students Marks: [67, 89, 78, 55]
+
+
+Total Bill: 550
+
+
+excellent : 1
+good : 2
+service : 2
+quality : 1
+
+
+12 Child
+25 Adult
+45 Adult
+67 Senior Citizen
+15 Child
+
+
+Electricity Bill: 750
+
+
+Highest Expense: 18000
+Month: 3

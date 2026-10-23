@@ -1,0 +1,31 @@
+Dataset Shape: (150, 4)
+Number of Samples: 150
+Number of Features: 4
+
+Features:
+['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+
+Cluster Labels:
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 0 0 0 2 0 0 0 0 0 0 0 0 2 0 0 0 0 2 0 0 0
+ 0 2 2 2 0 0 0 0 0 0 0 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 2 2 2 2 0 2 2 2 2
+ 2 2 0 0 2 2 2 2 0 2 0 2 0 2 2 0 2 2 2 2 2 2 0 0 2 2 2 0 2 2 2 0 2 2 2 0 2
+ 2 0]
+
+Cluster Centroids:
+[[-0.05021989 -0.88337647  0.34773781  0.2815273 ]
+ [-1.01457897  0.85326268 -1.30498732 -1.25489349]
+ [ 1.13597027  0.08842168  0.99615451  1.01752612]]
+
+Cluster Evaluation
+------------------
+Silhouette Score: 0.4599
+
+Number of Samples in Each Cluster:
+Cluster 0 : 53 samples
+Cluster 1 : 50 samples
+Cluster 2 : 47 samples
+
+
+
+

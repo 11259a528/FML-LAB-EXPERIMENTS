@@ -1,0 +1,92 @@
+# Dataset Splitting and Cross-Validation
+# Using Iris Dataset
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split, KFold, cross_val_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# Step 1: Load the Iris Dataset
+
+
+iris = load_iris()
+
+X = iris.data
+y = iris.target
+
+print("Dataset Shape:", X.shape)
+print("Number of Samples:", len(X))
+print("Number of Features:", X.shape[1])
+print("Target Classes:", iris.target_names)
+
+# Step 2: Split Dataset into Training and Testing
+
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.20,
+    random_state=42,
+    stratify=y
+)
+
+print("\nDataset Splitting")
+print("-----------------")
+print("Training samples:", len(X_train))
+print("Testing samples :", len(X_test))
+
+# Step 3: Create Logistic Regression Model
+
+model = LogisticRegression(max_iter=200)
+
+# Train the model
+model.fit(X_train, y_train)
+
+
+# Step 4: Predict Test Data
+
+
+y_pred = model.predict(X_test)
+
+# Calculate test accuracy
+accuracy = accuracy_score(y_test, y_pred)
+
+print("\nTest Set Performance")
+print("--------------------")
+print("Test Accuracy:", round(accuracy, 4))
+
+
+# Step 5: Implement 5-Fold Cross-Validation
+
+
+kf = KFold(
+    n_splits=5,
+    shuffle=True,
+    random_state=42
+)
+
+cv_scores = cross_val_score(
+    model,
+    X,
+    y,
+    cv=kf,
+    scoring='accuracy'
+)
+
+print("\n5-Fold Cross-Validation")
+print("-----------------------")
+
+for i, score in enumerate(cv_scores, start=1):
+    print("Fold", i, "Accuracy:", round(score, 4))
+
+
+# Step 6: Calculate Average Cross-Validation Score
+
+
+print("\nCross-Validation Results")
+print("------------------------")
+print("Average Accuracy:",
+      round(cv_scores.mean(), 4))
+
+print("Standard Deviation:",
+      round(cv_scores.std(), 4))

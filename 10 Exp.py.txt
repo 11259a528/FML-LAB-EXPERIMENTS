@@ -1,0 +1,105 @@
+# Hierarchical Clustering using Iris Dataset
+
+import matplotlib.pyplot as plt
+
+from sklearn.datasets import load_iris
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.metrics import silhouette_score
+
+from scipy.cluster.hierarchy import dendrogram, linkage
+
+
+# Step 1: Load Iris Dataset
+
+
+iris = load_iris()
+
+X = iris.data
+y = iris.target
+
+print("Dataset Shape:", X.shape)
+print("Number of Samples:", X.shape[0])
+print("Number of Features:", X.shape[1])
+
+print("\nFeatures:")
+print(iris.feature_names)
+
+# Step 2: Feature Scaling
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Step 3: Create Dendrogram
+
+linked = linkage(X_scaled, method='ward')
+
+plt.figure(figsize=(10, 6))
+
+dendrogram(
+    linked,
+    truncate_mode='lastp',
+    p=20
+)
+
+plt.title("Hierarchical Clustering Dendrogram")
+plt.xlabel("Data Points / Clusters")
+plt.ylabel("Distance")
+
+plt.show()
+
+# Step 4: Apply Agglomerative Clustering
+
+model = AgglomerativeClustering(
+    n_clusters=3,
+    linkage='ward'
+)
+
+labels = model.fit_predict(X_scaled)
+
+# Step 5: Display Cluster Labels
+# 
+
+print("\nCluster Labels:")
+print(labels)
+
+
+# Step 6: Calculate Silhouette Score
+
+silhouette = silhouette_score(
+    X_scaled,
+    labels
+)
+
+print("\nSilhouette Score:",
+      round(silhouette, 4))
+
+
+# Step 7: Count Samples in Each Cluster
+
+
+print("\nNumber of Samples in Each Cluster:")
+
+for i in range(3):
+    print(
+        "Cluster", i,
+        ":",
+        sum(labels == i),
+        "samples"
+    )
+
+# Step 8: Visualize Clusters
+
+plt.figure(figsize=(8, 6))
+
+plt.scatter(
+    X_scaled[:, 2],
+    X_scaled[:, 3],
+    c=labels
+)
+
+plt.xlabel("Petal Length")
+plt.ylabel("Petal Width")
+plt.title("Hierarchical Clustering on Iris Dataset")
+
+plt.show()

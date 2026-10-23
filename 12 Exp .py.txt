@@ -1,0 +1,96 @@
+# Implement Boosting Techniques and Compare Results
+# Dataset: Iris
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+import matplotlib.pyplot as plt
+
+# 1. Load dataset
+iris = load_iris()
+
+X = iris.data
+y = iris.target
+
+# 2. Split dataset
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.20,
+    random_state=42,
+    stratify=y
+)
+
+# 3. Create AdaBoost model
+ada_model = AdaBoostClassifier(
+    n_estimators=100,
+    random_state=42
+)
+
+# 4. Create Gradient Boosting model
+gb_model = GradientBoostingClassifier(
+    n_estimators=100,
+    random_state=42
+)
+
+# 5. Train models
+ada_model.fit(X_train, y_train)
+gb_model.fit(X_train, y_train)
+
+# 6. Predictions
+ada_pred = ada_model.predict(X_test)
+gb_pred = gb_model.predict(X_test)
+
+# 7. Function to calculate performance
+def evaluate_model(name, y_test, y_pred):
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(
+        y_test, y_pred, average="weighted"
+    )
+    recall = recall_score(
+        y_test, y_pred, average="weighted"
+    )
+    f1 = f1_score(
+        y_test, y_pred, average="weighted"
+    )
+
+    print("\n", name)
+    print("-" * 30)
+    print("Accuracy :", round(accuracy, 4))
+    print("Precision:", round(precision, 4))
+    print("Recall   :", round(recall, 4))
+    print("F1-Score :", round(f1, 4))
+
+    return accuracy, precision, recall, f1
+
+
+# 8. Evaluate AdaBoost
+ada_results = evaluate_model(
+    "AdaBoost",
+    y_test,
+    ada_pred
+)
+
+# 9. Evaluate Gradient Boosting
+gb_results = evaluate_model(
+    "Gradient Boosting",
+    y_test,
+    gb_pred
+)
+
+# 10. Compare accuracy
+models = ["AdaBoost", "Gradient Boosting"]
+accuracies = [
+    ada_results[0],
+    gb_results[0]
+]
+
+plt.figure(figsize=(7, 5))
+plt.bar(models, accuracies)
+
+plt.xlabel("Boosting Technique")
+plt.ylabel("Accuracy")
+plt.title("Comparison of Boosting Techniques")
+
+plt.ylim(0, 1.1)
+plt.show()

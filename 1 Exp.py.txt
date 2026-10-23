@@ -1,0 +1,139 @@
+#1.
+import numpy as np 
+print(np.__version__) 
+
+#2.
+#one-dimensional array
+import numpy as np 
+x=np.arange(2,6).reshape(4) 
+print(x)
+
+#two-dimensional array
+import numpy as np 
+x=np.arange(2,10).reshape(2,4) 
+print(x)
+
+#three-dimensional array
+import numpy as np 
+x=np.arange(24).reshape(4,3,2) 
+print(x)
+
+
+#3.
+import numpy as np 
+arr=np.array([1,2,3,4])
+print(arr[1:3:2])
+print(arr[:3])
+print(arr[::2])
+
+ 
+#4.
+import numpy as np 
+arr=np.array([0,30,60,90]) 
+print(np.sin(arr)) 
+print(np.cos(arr)) 
+print(np.tan(arr))
+
+ 
+ 
+#5.
+import numpy as np
+l = [12.23, 13.32, 100, 36.32]
+print("Original List:",l) 
+a = np.array(l)
+print("One-dimensional NumPy array: ",a)
+
+ 
+#6.
+import numpy as np 
+x = np.arange(12, 38) 
+print(x)
+
+ 
+ 
+#7.
+import numpy as np
+x = np.arange(12, 38)
+print("Original array:") 
+print(x)
+print("Reverse array:") 
+x = x[::-1]
+print(x)
+
+
+#8.
+import numpy as np
+x = [10, 20, 30]
+print("Original array:") 
+print(x)
+x = np.append(x, [[40, 50, 60], [70, 80, 90]])
+print("After append values to the end of the array:") 
+print(x)
+
+ 
+ 
+#9.
+import numpy as np
+array1 = np.array([0, 10, 20, 40, 60]) 
+print("Array1: ",array1)
+array2 = [10, 30, 40]
+print("Array2: ",array2)
+print("Common values between two arrays:") 
+print(np.intersect1d(array1, array2))
+
+
+#10.
+import numpy as np
+array1 = np.array([0, 10, 20, 40, 60, 80]) 
+print("Array1: ",array1)
+array2 = [10, 30, 40, 50, 70]
+print("Array2: ",array2)
+print("Unique sorted array of values that are in either of the two input arrays:")
+print(np.union1d(array1, array2))
+
+
+#11.
+import numpy as np
+a = np.array([[0, 1, 3], [5, 7, 9]])
+b = np.array([[0, 2, 4], [6, 8, 10]])
+c = np.concatenate((a, b), 1) 
+print(c)
+
+
+#12.
+#Fahrenheit degree to Centigrade degree.
+import numpy as np
+fvalues = [0, 12, 45.21, 34, 99.91, 32]
+F = np.array(fvalues)
+print("Values in Fahrenheit degrees:") 
+print(F)
+print("Values in Centigrade degrees:")
+print(np.round((5*F/9 - 5*32/9),2)) 
+
+
+#Centigrade degree to Fahrenheit degree.
+import numpy as np
+cvalues = [-17.78, -11.11, 7.34, 1.11, 37.73, 0]
+C = np.array(cvalues)
+print("Values in Centigrade degrees:") 
+print(C)
+print("Values in Fahrenheit degrees:") 
+print(np.round((9*C/5 + 32),2))
+
+#13.
+import numpy as np
+a=np.arange(9,dtype=np.float64).reshape(3,3) 
+print("First Array:")
+print(a) 
+b=np.array([10,20,30]) 
+print("Second Array:")
+print(b)
+print("Addition of Arrays:") 
+print(np.add(a,b)) 
+print("Subtraction of Arrays:") 
+print(np.subtract(a,b))
+print("Multiplication of Arrays:") 
+print(np.multiply(a,b)) 
+print("Division of Arrays:") 
+print(np.divide(a,b))
+ 
